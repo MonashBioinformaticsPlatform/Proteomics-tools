@@ -47,6 +47,18 @@ new_list<-lapply(file_list,setNames,column_headers)
 
 modified_files<- lapply(new_list,function(x) protein_group_iteration(x))
 
+
+###==== Count proteins per sample
+#### Count number of proteins after removing reverse sequence in each sample
+protein_count_table_list<-map2(modified_files, sheet_names, proteins_in_each_sample)
+
+protein_count_table<-as.data.frame(do.call(cbind,protein_count_table_list), 
+                                   stringsAsFactors = FALSE)
+protein_count_table_new<-as.data.frame(t(protein_count_table))
+
+## Reorder columns
+protein_count_table_new<- select(order(colnames(.)))
+
 ### Count how many proteins per group and store it in "Proteins_in_group" column
 ## Use function count_protein_groups
 
@@ -75,5 +87,7 @@ clean_output<-combined_results %>%
 ## Reorder columns alphabetically
 clean_output %>% select(order(colnames(.)))
 write.xlsx(clean_output,"Summary_byonic.xlsx",sheetName = "combined_results",showNA = FALSE, row.names = FALSE)
+write.xlsx(protein_count_table_new,"Protein_summary.xlsx", sheetName= "protein_summary", row.names=FLASE)
 
+## Session
 sessionInfo()
