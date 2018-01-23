@@ -57,7 +57,7 @@ protein_count_table<-as.data.frame(do.call(cbind,protein_count_table_list),
 protein_count_table_new<-as.data.frame(t(protein_count_table))
 
 ## Reorder columns
-protein_count_table_new<- select(order(colnames(.)))
+protein_count_table_new %>%  select(order(colnames(.)))
 
 ### Count how many proteins per group and store it in "Proteins_in_group" column
 ## Use function count_protein_groups
