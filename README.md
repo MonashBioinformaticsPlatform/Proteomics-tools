@@ -34,3 +34,7 @@ Repo for scripts for parsing Byonic output
 7.	Choose the correct folder.
 8.	Script will run (Note check if > appears after a while in “Console” panel)
 9.	Output file is located in the same MAIN BYONIC directory you choose with the name “Summary_byonic.xlsx”
+
+### Output
+1. Summary_byonic.xlsx - File containing merged results
+2. Protein_summary.xlsx - File containing protein counts table
