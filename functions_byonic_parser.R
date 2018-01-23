@@ -8,6 +8,16 @@ count_protein_groups <- function(df){
  return(new_df)
 }
 
+proteins_in_each_sample<-function(df,names_vector){
+  new_list<-list()
+  new_df<- df %>% 
+    filter(!grepl("^>Reverse",Description))
+  new_list[["Total_proteins"]]<-nrow(new_df)
+  new_list[["Sample_name"]]<-names_vector
+  ## convert to tidy dataframe
+  return(new_list)
+}
+
 protein_group_iteration<- function(df){
   updated_sheet<- df %>% group_by(Protein_Rank)%>% 
     mutate(Log_Probability=unique(Log_Probability[!is.na(Log_Probability)]),
