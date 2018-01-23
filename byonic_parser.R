@@ -87,7 +87,7 @@ clean_output<-combined_results %>%
 ## Reorder columns alphabetically
 clean_output %>% select(order(colnames(.)))
 write.xlsx(clean_output,"Summary_byonic.xlsx",sheetName = "combined_results",showNA = FALSE, row.names = FALSE)
-write.xlsx(protein_count_table_new,"Protein_summary.xlsx", sheetName= "protein_summary", row.names=FLASE)
+write.xlsx(protein_count_table_new,"Protein_summary.xlsx", sheetName= "protein_summary", row.names=FALSE)
 
 ## Session
 sessionInfo()
