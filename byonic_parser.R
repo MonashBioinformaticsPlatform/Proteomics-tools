@@ -23,7 +23,7 @@ source("D:/Applications/Scripts/Byonic/functions_byonic_parser.R", chdir = TRUE)
 #sanity check
 getwd()
 # Get all file names with byonic output
-file_names<-list.files(getwd(),pattern = "*_Byonic.xlsx",recursive = T)
+file_names<-list.files(getwd(),pattern = "*.xlsx",recursive = T)
 ## clean up file names
 sheet_names<- file_names %>% gsub(".*[/]","",.) %>% gsub("[.]raw.*","",.) %>% sub("^[^_]*_","",.)
 
